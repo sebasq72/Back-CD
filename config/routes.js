@@ -33,5 +33,10 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+   'GET /api/Disc': 'DiscController.get',
+   'POST /api/Disc': 'DiscController.create',
+   'PUT /api/Disc/:id': 'DiscController.update',
+   'DELETE /api/Disc/:id': 'DiscController.delete',
+
 
 };
