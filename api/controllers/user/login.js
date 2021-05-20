@@ -50,7 +50,8 @@ module.exports = {
       //Si no existe devuevle error
       if (!_user) {
         return exits.notAUser({
-          error: `An account belonging to ${inputs.user} was not found`,
+          message: `An account belonging to ${inputs.user} was not found`,
+          success: false,
         });
       }
 
@@ -62,25 +63,26 @@ module.exports = {
         });
 
       //Generación de token
-      const token = await sails.helpers.generateNewJwtToken(_user.email);
+      const token = await sails.helpers.generateNewJwtToken(_user.user);
 
       //Retorna exitoso
       return exits.success({
         message: `${_user.user} has been logged in`,
-        data: _user,
+        //data: _user,
+        success: true,
         token,
       });
     } catch (error) {
       sails.log.error(error);
       if (error.isOperational) {
         return exits.operationalError({
-          message: `Error logging in user ${inputs.user}`,
-          error: error.raw,
+          message: `Error logging in user ${inputs.user} ` + error.raw,
+          success: false,
         });
       }
       return exits.error({
-        message: `Error logging in user ${inputs.user}`,
-        error: error.message,
+        message: `Error logging in user ${inputs.user} - ` + error.message,
+        success: false,
       });
     }
   }

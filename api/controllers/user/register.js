@@ -65,19 +65,20 @@ module.exports = {
         .then(function (login) {
           return exits.success({
             message: `An account has been created for ${inputs.user} successfully.`,
+            success: true,
           });
         })
         .catch(function (error) {
           sails.log.debug(err);
           if (error.code === "E_UNIQUE") {
             return exits.emailAlreadyInUse({
-              message: "Oops :) an error occurred",
-              error: "This email address already exits",
+              message: "Oops :) an error occurred - This email address already exits",
+              success: false,
             });
           }
           return exits.error({
-            message: "Oops :) an error occurred",
-            error: error.message,
+            message: "Oops :) an error occurred - " + error.message,
+            success: false,
           });
         });
     });
