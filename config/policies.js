@@ -19,8 +19,8 @@ module.exports.policies = {
 
   // '*': true,
 
-//   'DiscController': {
-//     'get': 'isAuth' // Para usar politica sobre el metodo
-// }
+  'DiscController': {
+    'get': 'isAuth' // Para usar politica sobre el metodo
+}
 
 };

@@ -12,10 +12,6 @@ module.exports = async function (req, res, proceed) {
 
   //sails.log(token);
 
-  // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzZWJhc3E3MiIsImlzcyI6Ik11c2ljIFN0b3JlIFNhaWxzIEFQSSIsImlhdCI6MTYyMTQ4MTY4NywiZXhwIjoxNjIxNTY4MDg3fQ.WMvzPgxIJoXBvdbGa4QgMwYVneIIsOFUGqTMV-oCUJA
-
-  // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzZWJhc3E3MiIsImlzcyI6Ik11c2ljIFN0b3JlIFNhaWxzIEFQSSIsImlhdCI6MTYyMTQ4MjQ4OSwiZXhwIjoxNjIxNDg2MDg5fQ.Klq0_ASfhkacSTHMIYD9jOiRP9eGOZArUukTMq6Ct7E
-
   sails.helpers.jwTokenValidate
     .with({
       token: token,

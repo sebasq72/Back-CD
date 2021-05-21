@@ -27,15 +27,15 @@ module.exports = {
       description: "Login successful",
     },
     notAUser: {
-      statusCode: 404,
+      statusCode: 200,
       description: "User not found",
     },
     passwordMismatch: {
-      statusCode: 401,
+      statusCode: 200,
       description: "Password do not match",
     },
     operationalError: {
-      statusCode: 400,
+      statusCode: 200,
       description: "The request was formed properly",
     },
   },
