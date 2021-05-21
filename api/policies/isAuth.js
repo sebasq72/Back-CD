@@ -44,7 +44,7 @@ module.exports = async function (req, res, proceed) {
       //return res.forbidden();
 
       res.status(401).send({
-        mensaje: "Token inválido",
+        mensaje: "Catch Token inválido",
         success: false,
       });
     });

@@ -38,7 +38,7 @@ module.exports.routes = {
    'PUT /api/Disc/:id': 'DiscController.update',
    'DELETE /api/Disc/:id': 'DiscController.delete',
 
-   'POST /user/login': 'user/login',
-   'POST /user/register': 'user/register',
+   'POST /api/user/login': 'user/login',
+   'POST /api/user/register': 'user/register',
 
 };
