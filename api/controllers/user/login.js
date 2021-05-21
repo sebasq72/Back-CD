@@ -47,7 +47,7 @@ module.exports = {
       //Se hace la consulta a la bd filtrando por el usuario
       let _user = await LogIn.findOne({ user: inputs.user.toLowerCase() });
 
-      //Si no existe devuevle error
+      //Si no existe devuelve error
       if (!_user) {
         return exits.notAUser({
           message: `An account belonging to ${inputs.user} was not found`,
