@@ -48,6 +48,13 @@ module.exports = {
       example: "3006326907",
       description: "Phone from customer",
     },
+    rol: {
+      type: "string",
+      required: true,
+      unique: true,
+      example: "user",
+      description: "rol en la aplicación",
+    },
     // emailProofToken: {
     //   type: "string",
     //   description: "This will be used in the account verification email",

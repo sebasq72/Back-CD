@@ -59,7 +59,10 @@ module.exports = {
       await sails.helpers.passwords
         .checkPassword(inputs.password, _user.password)
         .intercept("incorrect", (error) => {
-          exits.passwordMismatch({ error: error.message });
+          exits.passwordMismatch({
+            message: error.message,
+            success: false,
+          });
         });
 
       //Generación de token
@@ -68,7 +71,7 @@ module.exports = {
       //Retorna exitoso
       return exits.success({
         message: `${_user.user} has been logged in`,
-        //data: _user,
+        rol: _user.rol,
         success: true,
         token,
       });

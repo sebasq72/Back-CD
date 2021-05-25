@@ -7,27 +7,54 @@
 
 module.exports = {
   get: function (req, res) {
-    Disc.find()
-      .then(function (disc) {
-        if (!disc || disc.length === 0) {
+    let _id = req.param("id");
+    //sails.log(_id);
+
+    if (_id != undefined) {
+      Disc.findOne({ id: _id })
+        .then(function (disc) {
+          if (!disc || disc.length === 0) {
+            return res.send({
+              success: false,
+              message: "Sin registros",
+            });
+          }
+          debugger;
+          return res.send({
+            success: true,
+            message: "solicitud exitosa",
+            data: Array(disc)
+          });
+        })
+        .catch(function (err) {
           return res.send({
             success: false,
-            message: "Sin registros",
+            message: "Ha ocurrido un error en la solicitud",
           });
-        }
-        debugger;
-        return res.send({
-          success: true,
-          message: "solicitud exitosa",
-          data: disc,
         });
-      })
-      .catch(function (err) {
-        return res.send({
-          success: false,
-          message: "Ha ocurrido un error en la solicitud",
+    } else {
+      Disc.find()
+        .then(function (disc) {
+          if (!disc || disc.length === 0) {
+            return res.send({
+              success: false,
+              message: "Sin registros",
+            });
+          }
+          debugger;
+          return res.send({
+            success: true,
+            message: "solicitud exitosa",
+            data: disc,
+          });
+        })
+        .catch(function (err) {
+          return res.send({
+            success: false,
+            message: "Ha ocurrido un error en la solicitud",
+          });
         });
-      });
+    }
   },
 
   create: function (req, res) {

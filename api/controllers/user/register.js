@@ -37,18 +37,23 @@ module.exports = {
       type: "number",
       required: true,
     },
+    rol: {
+      type: "string",
+      required: true,
+    },
   },
 
   exits: {
     success: {
-      statusCode: 201,
+      statusCode: 200,
       description: "New muna user created",
     },
-    emailAlreadyInUse: {
-      statusCode: 400,
-      description: "Email address already in use",
+    email_userName_AlreadyInUse: {
+      statusCode: 200,
+      description: "Email address or user name already in use",
     },
     error: {
+      statusCode: 200,
       description: "Something went wrong",
     },
   },
@@ -69,10 +74,10 @@ module.exports = {
           });
         })
         .catch(function (error) {
-          sails.log.debug(err);
+          sails.log.debug(error);
           if (error.code === "E_UNIQUE") {
-            return exits.emailAlreadyInUse({
-              message: "Oops :) an error occurred - This email address already exits",
+            return exits.email_userName_AlreadyInUse({
+              message: "Oops :) an error occurred - This email address or user name already exits",
               success: false,
             });
           }
